@@ -4,7 +4,7 @@ A cointegration-based pairs trading backtest over 50 FTSE 100 constituents, with
 interactive Streamlit dashboard that separates in-sample pair selection from
 out-of-sample trading.
 
-**Live demo:** _coming soon_ <!-- replace with https://<your-app>.streamlit.app -->
+**Live demo:** https://ftse-stat-arb.streamlit.app
 
 ![Dashboard screenshot](docs/screenshot.png) <!-- add a screenshot at docs/screenshot.png -->
 
