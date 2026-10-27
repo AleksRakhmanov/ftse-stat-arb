@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 data/*.csv
 output/
+!data/prices_snapshot.csv
+!data/pair_scan_snapshot.csv

@@ -1,6 +1,35 @@
 # FTSE 100 Statistical Arbitrage — Pairs Trading System
 
-A cointegration-based pairs trading backtest over 50 FTSE 100 constituents.
+A cointegration-based pairs trading backtest over 50 FTSE 100 constituents, with an
+interactive Streamlit dashboard that separates in-sample pair selection from
+out-of-sample trading.
+
+**Live demo:** _coming soon_ <!-- replace with https://<your-app>.streamlit.app -->
+
+![Dashboard screenshot](docs/screenshot.png) <!-- add a screenshot at docs/screenshot.png -->
+
+## Run locally
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+The dashboard opens at http://localhost:8501. Adjust thresholds, z-score window,
+ADF cutoff, costs, pair count and the in-sample / out-of-sample split in the
+sidebar, then press **Run backtest**.
+
+- Prices come from the bundled snapshot `data/prices_snapshot.csv`, so the app
+  works offline. Tick **Refresh live data (yfinance)** to download fresh prices
+  instead; if the download fails the app falls back to the snapshot.
+- Pairs and hedge ratios are fitted on in-sample data only, then traded
+  unchanged out-of-sample. Metrics are reported separately for each period.
+- `data/pair_scan_snapshot.csv` caches the pair scan for the snapshot at the
+  default split so the app starts quickly. Regenerate it after replacing the
+  snapshot with `python -m ui.engine`.
+
+App code lives in `app.py` (layout) and `ui/` (data loading, in/out-of-sample
+engine, Plotly charts). The analysis modules below are reused unchanged.
 
 ## Pipeline
 
@@ -22,7 +51,7 @@ A cointegration-based pairs trading backtest over 50 FTSE 100 constituents.
    aggregate portfolio curve, drawdown) and an openpyxl Excel dashboard.
 7. **`main.py`** — orchestrates the full run.
 
-## Usage
+## Batch pipeline (CLI)
 
 ```bash
 pip install -r requirements.txt
